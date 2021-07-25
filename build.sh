@@ -1,0 +1,1 @@
+ANDROID_SDK_ROOT=~/Library/Android/sdk ANDROID_AVD_HOME=~/.android/avd cordova build
