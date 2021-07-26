@@ -1,9 +1,9 @@
 {
   "name": "cordova-cashbutton",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "Cash Button Cordova Plugin.",
   "cordova": {
-    "id": "com.untaek.cordova.cashbutton",
+    "id": "cordova-cashbutton",
     "platforms": [
       "android"
     ]

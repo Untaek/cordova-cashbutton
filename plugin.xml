@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="com.untaek.cordova.cashbutton" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="cordova-cashbutton" version="0.0.4" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>cordova-cashbutton</name>
     <js-module name="cordova-cashbutton" src="www/cordova-cashbutton.js">
         <clobbers target="cordova.plugins.cordova-cashbutton" />
@@ -17,24 +17,24 @@
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <meta-data
+                android:name="avatye_market"
+                android:value="googleplay" />
+            <meta-data
+                android:name="avatye_log"
+                android:value="true" />
+            <!-- <meta-data
                 android:name="avatye_appid"
                 android:value="91e4b7f81a6511ea813d0a4916b2361a" />
             <meta-data
                 android:name="avatye_appsecret"
                 android:value="aafc702323bf6a214" />
             <meta-data
-                android:name="avatye_market"
-                android:value="googleplay" />
-            <meta-data
                 android:name="com.buzzvil.APP_KEY"
                 android:value="app-pub-150484850088628" />
-            <meta-data
-                android:name="avatye_log"
-                android:value="true" />
             <provider        
                 android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"  
                 android:authorities="${applicationId}.TTMultiProvider"  
-                android:exported="false" />
+                android:exported="false" /> -->
         </config-file>
         <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
             <application android:usesCleartextTraffic="true" android:networkSecurityConfig="@xml/network_security_config" />
