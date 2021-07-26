@@ -32,6 +32,7 @@ public class cordovaCashbutton extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         switch (action) {
+            case "exitApp": this.exitApp(callbackContext); return true;
             case "load": this.load(callbackContext); return true;
             case "getDockState": this.getDockState(callbackContext); return true;
             case "setDockState": this.setDockState(args, callbackContext); return true;
@@ -40,6 +41,10 @@ public class cordovaCashbutton extends CordovaPlugin {
             case "overrideOnBackPressedBehavior": this.overrideOnBackPressedBehavior(callbackContext); return true;
             default: return false;
         }
+    }
+
+    private void exitApp(CallbackContext callbackContext) {
+        cordova.getActivity().finish();
     }
 
     private void load(CallbackContext callbackContext) {
@@ -114,12 +119,21 @@ public class cordovaCashbutton extends CordovaPlugin {
             return;
         }
 
-        cashButton.onBackPressed(new ICashButtonBackPressedListener() {
+        cordova.getActivity().runOnUiThread(new Runnable() {
             @Override
-            public void onBackPressed(boolean isSuccess) {
-                if (isSuccess) {
-                    cordova.getActivity().finish();
-                }
+            public void run() {
+                cashButton.onBackPressed(new ICashButtonBackPressedListener() {
+                    @Override
+                    public void onBackPressed(boolean isSuccess) {
+                        if (isSuccess) {
+                            if (webView.canGoBack()) {
+                                webView.backHistory();
+                            } else {
+                                cordova.getActivity().finish();
+                            }
+                        }
+                    }
+                });
             }
         });
     }
