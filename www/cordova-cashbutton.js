@@ -19,3 +19,7 @@ exports.cashButtonGetCashButtonState = function (arg0, success, error) {
 exports.cashButtonSetCashButtonState = function (arg0, success, error) {
     exec(success, error, 'cordovaCashbutton', 'setCashButtonState', [arg0])
 }
+
+exports.overrideOnBackPressedBehavior = function (arg0, success, error) {
+    exec(success, error, 'cordovaCashbutton', 'overrideOnBackPressedBehavior', [])
+}

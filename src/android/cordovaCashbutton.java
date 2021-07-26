@@ -37,6 +37,7 @@ public class cordovaCashbutton extends CordovaPlugin {
             case "setDockState": this.setDockState(args, callbackContext); return true;
             case "getCashButtonState": this.getCashButtonState(callbackContext); return true;
             case "setCashButtonState": this.setCashButtonState(args, callbackContext); return true;
+            case "overrideOnBackPressedBehavior": this.overrideOnBackPressedBehavior(callbackContext); return true;
             default: return false;
         }
     }
@@ -55,7 +56,7 @@ public class cordovaCashbutton extends CordovaPlugin {
 
     private void getDockState(CallbackContext callbackContext) {
         if (cashButton == null) {
-            callbackContext.error("Cash button has not initilaized.");
+            callbackContext.error("Cash button has not initialized.");
             return;
         }
 
@@ -64,7 +65,7 @@ public class cordovaCashbutton extends CordovaPlugin {
 
     private void setDockState(JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (cashButton == null) {
-            callbackContext.error("Cash button has not initilaized.");
+            callbackContext.error("Cash button has not initialized.");
             return;
         }
 
@@ -79,7 +80,7 @@ public class cordovaCashbutton extends CordovaPlugin {
 
     private void getCashButtonState(CallbackContext callbackContext) {
         if (cashButton == null) {
-            callbackContext.error("Cash button has not initilaized.");
+            callbackContext.error("Cash button has not initialized.");
             return;
         }
 
@@ -88,7 +89,7 @@ public class cordovaCashbutton extends CordovaPlugin {
 
     private void setCashButtonState(JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (cashButton == null) {
-            callbackContext.error("Cash button has not initilaized.");
+            callbackContext.error("Cash button has not initialized.");
             return;
         }
 
@@ -105,5 +106,21 @@ public class cordovaCashbutton extends CordovaPlugin {
             cashButton.setCashButtonHide();
         }
         callbackContext.success();
+    }
+
+    private void overrideOnBackPressedBehavior(CallbackContext callbackContext) {
+        if (cashButton == null) {
+            callbackContext.error("Cash button has not initialized.");
+            return;
+        }
+
+        cashButton.onBackPressed(new ICashButtonBackPressedListener() {
+            @Override
+            public void onBackPressed(boolean isSuccess) {
+                if (isSuccess) {
+                    cordova.getActivity().finish();
+                }
+            }
+        });
     }
 }
