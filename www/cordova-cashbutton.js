@@ -23,5 +23,5 @@ exports.cashButtonSetCashButtonState = function (arg0, success, error) {
 }
 
 exports.overrideOnBackPressedBehavior = function (error) {
-    exec(onBackPressed, error, SERVICE_NAME, 'overrideOnBackPressedBehavior', [])
+    exec(null, error, SERVICE_NAME, 'overrideOnBackPressedBehavior', [])
 }
