@@ -1,6 +1,6 @@
 {
   "name": "cordova-cashbutton",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Cash Button Cordova Plugin.",
   "cordova": {
     "id": "cordova-cashbutton",
